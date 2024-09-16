@@ -23,7 +23,7 @@ const CountryCard = (props) => {
           height: "100px",
         }}
       />
-      <h3>{props.name}</h3>
+      <h2>{props.name}</h2>
     </div>
   );
 };
