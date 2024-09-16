@@ -3,8 +3,7 @@ import CountryCard from "./CountryCard";
 import axios from "axios";
 
 const Countries = () => {
-  const CountriesAPI_Endpoint =
-    "https://xcountries-backend.azurewebsites.net/all";
+  const CountriesAPI_Endpoint = "https://restcountries.com/v3.1/all";
   const [countries, setCountries] = useState([]);
   const [input, setInput] = useState("");
 
@@ -51,15 +50,21 @@ const Countries = () => {
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {input === ""
           ? countries.map((country, index) => (
-              <CountryCard key={index} src={country.flag} name={country.name} />
+              <CountryCard
+                key={index}
+                src={country.flags.png}
+                name={country.name.common}
+              />
             ))
           : countries
-              .filter((country) => country.name.includes(input))
+              .filter((country) =>
+                country.name.common.toLowerCase().includes(input.toLowerCase())
+              )
               .map((country, index) => (
                 <CountryCard
                   key={index}
-                  src={country.flag}
-                  name={country.name}
+                  src={country.flags.png}
+                  name={country.name.common}
                 />
               ))}
       </div>
